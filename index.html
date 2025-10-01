@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Digital Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+  <div class="container animate__animated animate__fadeInDown">
+    <h1>Welcome! Create Your Portfolio 🌟</h1>
+    <form id="portfolioForm">
+      <label>Full Name</label>
+      <input type="text" id="fullName" placeholder="Your full name" required>
+
+      <label>Email</label>
+      <input type="email" id="email" placeholder="example@gmail.com" required>
+
+      <label>Phone</label>
+      <input type="text" id="phone" placeholder="+91 9876543210">
+
+      <label>Profile Photo</label>
+      <input type="file" id="profilePic" accept="image/*">
+
+      <label>About Me</label>
+      <textarea id="about" placeholder="A short introduction about yourself" required></textarea>
+
+      <label>Skills (comma separated)</label>
+      <textarea id="skills" placeholder="Java, HTML, CSS, React, Node.js"></textarea>
+
+      <label>Hobbies</label>
+      <textarea id="hobbies" placeholder="Your hobbies"></textarea>
+
+      <label>Projects</label>
+      <textarea id="projects" placeholder="Describe your projects"></textarea>
+
+      <label>Education</label>
+      <textarea id="education" placeholder="Your education details"></textarea>
+
+      <label>Experience</label>
+      <textarea id="experience" placeholder="Internships or work experience"></textarea>
+
+      <label>Achievements</label>
+      <textarea id="achievements" placeholder="Awards or recognitions"></textarea>
+
+      <label>LinkedIn Profile</label>
+      <input type="url" id="linkedin" placeholder="https://www.linkedin.com/in/username">
+
+      <label>GitHub Profile</label>
+      <input type="url" id="github" placeholder="https://github.com/username">
+
+      <button type="submit">Next: Choose Template 🚀</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Animate form fields one by one
+    document.addEventListener("DOMContentLoaded", function () {
+      const elements = document.querySelectorAll("#portfolioForm input, #portfolioForm textarea, #portfolioForm button");
+      elements.forEach((el, i) => {
+        setTimeout(() => {
+          el.style.opacity = 1;
+          el.classList.add("animate__animated", "animate__fadeInUp");
+        }, i * 150);
+      });
+    });
+  </script>
+</body>
+</html>

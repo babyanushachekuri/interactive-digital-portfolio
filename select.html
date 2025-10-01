@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Portfolio Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f6d365, #fda085, #ff9a9e);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+.container {
+  max-width:900px;
+  width:90%;
+  text-align:center;
+}
+h1 {
+  color:#fff;
+  margin-bottom:30px;
+  text-shadow:1px 1px 5px rgba(0,0,0,0.3);
+}
+.templates {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap:20px;
+}
+.template-card {
+  background:#fff;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  cursor:pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.template-card:hover {
+  transform: scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+.template-card img {
+  width:100%;
+  border-radius:10px;
+  margin-bottom:15px;
+  object-fit:cover;
+  height:150px;
+}
+.template-card h2 {
+  margin:0;
+  font-size:1.2rem;
+  color:#333;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Select Your Portfolio Template</h1>
+  <div class="templates">
+    <div class="template-card" onclick="openTemplate('template1.html')">
+      <img src="images/template1.png" alt="Template 1">
+      <h2>Template 1 - Modern Professional</h2>
+    </div>
+    <div class="template-card" onclick="openTemplate('template2.html')">
+      <img src="images/template2.png" alt="Template 2">
+      <h2>Template 2 - Creative Colorful</h2>
+    </div>
+    <div class="template-card" onclick="openTemplate('template3.html')">
+      <img src="images/template3.png" alt="Template 3">
+      <h2>Template 3 - Elegant Corporate</h2>
+    </div>
+  </div>
+</div>
+
+<script>
+function openTemplate(templateFile) {
+  window.location.href = templateFile;
+}
+</script>
+</body>
+</html>

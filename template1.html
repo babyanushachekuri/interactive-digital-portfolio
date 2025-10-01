@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Template 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body { margin:0; font-family:'Roboto', sans-serif; background:#f5f6fa; }
+.container { display:flex; max-width:1000px; margin:40px auto; background:#fff; border-radius:15px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.2);}
+.left { flex:1; background:#0984e3; color:#fff; padding:40px; text-align:center; }
+.left img { width:150px; height:150px; border-radius:50%; object-fit:cover; border:4px solid #fff; margin-bottom:15px; }
+.left h1 { margin:10px 0; }
+.left p { margin:5px 0; }
+.right { flex:2; padding:30px; }
+.section { margin-bottom:20px; }
+.section h2 { color:#0984e3; margin-bottom:8px; border-bottom:2px solid #0984e3; display:inline-block; }
+.section a { color:#0984e3; text-decoration:none; margin-right:15px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="left">
+    <img id="profilePicTemplate" src="" alt="Profile Photo">
+    <h1 id="fullNameTemplate"></h1>
+    <p id="emailTemplate"></p>
+    <p id="phoneTemplate"></p>
+    <p id="linkedinTemplate"></p>
+    <p id="githubTemplate"></p>
+  </div>
+  <div class="right">
+    <div class="section">
+      <h2>About Me</h2>
+      <p id="aboutTemplate"></p>
+    </div>
+    <div class="section">
+      <h2>Skills</h2>
+      <p id="skillsTemplate"></p>
+    </div>
+    <div class="section">
+      <h2>Projects</h2>
+      <p id="projectsTemplate"></p>
+    </div>
+    <div class="section">
+      <h2>Education</h2>
+      <p id="educationTemplate"></p>
+    </div>
+    <div class="section">
+      <h2>Experience</h2>
+      <p id="experienceTemplate"></p>
+    </div>
+    <div class="section">
+      <h2>Achievements</h2>
+      <p id="achievementsTemplate"></p>
+    </div>
+    <div class="section">
+      <h2>Hobbies</h2>
+      <p id="hobbiesTemplate"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const fields = ["fullName","email","phone","about","skills","projects","education","experience","achievements","hobbies","linkedin","github"];
+  fields.forEach(f => {
+    const el = document.getElementById(f + "Template");
+    if(el){
+      if(f==="linkedin"){
+        el.innerHTML = sessionStorage.getItem(f) ? `<a href="${sessionStorage.getItem(f)}" target="_blank">LinkedIn</a>` : '';
+      } else if(f==="github"){
+        el.innerHTML = sessionStorage.getItem(f) ? `<a href="${sessionStorage.getItem(f)}" target="_blank">GitHub</a>` : '';
+      } else {
+        el.innerText = sessionStorage.getItem(f) || '';
+      }
+    }
+  });
+
+  const profilePic = sessionStorage.getItem('profilePic');
+  if(profilePic){
+    document.getElementById('profilePicTemplate').src = profilePic;
+  }
+});
+</script>
+</body>
+</html>
