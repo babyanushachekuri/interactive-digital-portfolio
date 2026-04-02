@@ -15,25 +15,25 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE .'
+                bat 'docker build -t %DOCKER_IMAGE% .'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh '''
-                docker rm -f test-container || true
-                docker run -d -p 8081:80 --name test-container $DOCKER_IMAGE
-                '''
+                bat '''
+docker rm -f test-container || exit 0
+docker run -d -p 8081:80 --name test-container %DOCKER_IMAGE%
+'''
             }
         }
 
         stage('Test') {
             steps {
-                sh '''
-                sleep 5
-                curl -f http://localhost:8081 || exit 1
-                '''
+               bat '''
+timeout 5
+curl -f http://localhost:8081 || exit 1
+'''
             }
         }
 
@@ -44,10 +44,10 @@ pipeline {
                     usernameVariable: 'USER',
                     passwordVariable: 'PASS'
                 )]) {
-                    sh '''
-                    echo $PASS | docker login -u $USER --password-stdin
-                    docker push $DOCKER_IMAGE
-                    '''
+                    bat '''
+echo %PASS% | docker login -u %USER% --password-stdin
+docker push %DOCKER_IMAGE%
+'''
                 }
             }
         }
@@ -55,7 +55,7 @@ pipeline {
 
     post {
         always {
-            sh 'docker rm -f test-container || true'
+            bat 'docker rm -f test-container || exit 0'
         }
     }
 }
