@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "yourdockerhubusername/portfolio-app"
+        DOCKER_IMAGE = "chekurianusha/portfolio-app"
     }
 
     stages {
 
         stage('Clone Code') {
             steps {
-                git 'https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO.git'
+                git branch: 'main', url: 'https://github.com/babyanushachekuri/interactive-digital-portfolio.git'
             }
         }
 
